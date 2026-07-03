@@ -3,6 +3,10 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import AnimatedGridBackground from "@/components/background/AnimatedGridBackground";
+import CursorGlow from "@/components/animation/CursorGlow";
+import ScrollProgress from "@/components/animation/ScrollProgress";
+import SmoothScrollProvider from "@/components/animation/SmoothScrollProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -60,9 +64,14 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <AnimatedGridBackground />
+        <CursorGlow />
+        <SmoothScrollProvider>
+          <ScrollProgress />
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </SmoothScrollProvider>
       </body>
     </html>
   );

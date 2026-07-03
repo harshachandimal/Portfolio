@@ -3,18 +3,39 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, X, Terminal } from "lucide-react";
+import { motion } from "motion/react";
 import { navItems } from "@/data/nav";
 import { cn } from "@/lib/utils";
+import MagneticButton from "@/components/animation/MagneticButton";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState<string>("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.getElementById(item.href.slice(1)))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -31,24 +52,46 @@ export default function Navbar() {
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
-          {navItems.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className="text-sm text-muted transition-colors hover:text-cyan-glow"
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
+          {navItems.map((item) => {
+            const id = item.href.slice(1);
+            const isActive = active === id;
+            return (
+              <li key={item.href} className="relative">
+                <Link
+                  href={item.href}
+                  className={cn(
+                    "group relative inline-block text-sm transition-colors",
+                    isActive ? "text-cyan-glow" : "text-muted hover:text-foreground"
+                  )}
+                >
+                  {item.label}
+                  <span
+                    className={cn(
+                      "absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-cyan-glow/50 transition-transform duration-300 group-hover:scale-x-100",
+                      isActive && "hidden"
+                    )}
+                  />
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute -bottom-1 left-0 h-px w-full bg-cyan-glow shadow-[0_0_8px_var(--accent-cyan)]"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
-        <Link
-          href="#contact"
-          className="hidden rounded-full border border-cyan-glow/40 bg-cyan-glow/10 px-4 py-2 text-sm text-cyan-glow transition-all hover:bg-cyan-glow/20 md:inline-flex"
-        >
-          Let&apos;s Talk
-        </Link>
+        <MagneticButton className="hidden md:inline-flex">
+          <Link
+            href="#contact"
+            className="inline-flex rounded-full border border-cyan-glow/40 bg-cyan-glow/10 px-4 py-2 text-sm text-cyan-glow transition-all hover:bg-cyan-glow/20"
+          >
+            Let&apos;s Talk
+          </Link>
+        </MagneticButton>
 
         <button
           type="button"

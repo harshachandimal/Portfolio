@@ -1,6 +1,10 @@
+"use client";
+
+import { motion } from "motion/react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { projects } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
+import AnimatedSection, { fadeUpItem } from "@/components/animation/AnimatedSection";
 
 export default function FeaturedProjects() {
   const featured = projects.filter((p) => p.featured);
@@ -13,11 +17,13 @@ export default function FeaturedProjects() {
         description="A selection of production-style projects spanning full-stack platforms and applied machine learning."
       />
 
-      <div className="grid gap-6 sm:grid-cols-2">
+      <AnimatedSection className="grid gap-6 sm:grid-cols-2">
         {featured.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+          <motion.div key={project.slug} variants={fadeUpItem} className="h-full">
+            <ProjectCard project={project} />
+          </motion.div>
         ))}
-      </div>
+      </AnimatedSection>
     </section>
   );
 }

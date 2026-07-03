@@ -1,6 +1,10 @@
+"use client";
+
 import { Brain, Cpu, Layers } from "lucide-react";
+import { motion } from "motion/react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import GlassCard from "@/components/ui/GlassCard";
+import AnimatedSection, { fadeUpItem } from "@/components/animation/AnimatedSection";
 
 const pillars = [
   {
@@ -32,15 +36,17 @@ export default function About() {
         description="I'm Harsha Chandimal, a Computer Science undergraduate at the University of Westminster. I care about building software that doesn't just function — it reasons about data, predicts outcomes, and explains itself to the people using it."
       />
 
-      <div className="grid gap-6 sm:grid-cols-3">
+      <AnimatedSection className="grid gap-6 sm:grid-cols-3">
         {pillars.map(({ icon: Icon, title, body, accent }) => (
-          <GlassCard key={title}>
-            <Icon className={`h-6 w-6 ${accent}`} aria-hidden />
-            <h3 className="mt-4 text-lg font-semibold text-foreground">{title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted">{body}</p>
-          </GlassCard>
+          <motion.div key={title} variants={fadeUpItem}>
+            <GlassCard>
+              <Icon className={`h-6 w-6 ${accent}`} aria-hidden />
+              <h3 className="mt-4 text-lg font-semibold text-foreground">{title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{body}</p>
+            </GlassCard>
+          </motion.div>
         ))}
-      </div>
+      </AnimatedSection>
     </section>
   );
 }
