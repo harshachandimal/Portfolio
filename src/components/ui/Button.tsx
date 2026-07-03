@@ -8,6 +8,7 @@ interface ButtonProps {
   variant?: "primary" | "secondary" | "ghost";
   icon?: ReactNode;
   external?: boolean;
+  download?: boolean | string;
   className?: string;
 }
 
@@ -26,6 +27,7 @@ export default function Button({
   variant = "primary",
   icon,
   external,
+  download,
   className,
 }: ButtonProps) {
   return (
@@ -33,6 +35,7 @@ export default function Button({
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
+      download={download}
       className={cn(
         "inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm transition-all duration-300",
         variants[variant],

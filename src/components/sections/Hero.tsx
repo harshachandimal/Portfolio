@@ -98,9 +98,9 @@ export default function Hero() {
           <motion.div variants={fadeUpItem}>
             <MagneticButton>
               <Button
-                href="/resume.pdf"
+                href="/Harsha-Chandimal-CV.pdf"
                 variant="secondary"
-                external
+                download="Harsha-Chandimal-CV.pdf"
                 icon={<Download className="h-4 w-4" />}
               >
                 Download CV
