@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Download, ArrowRight, Mail } from "lucide-react";
 import GridBackground from "@/components/ui/GridBackground";
 import Button from "@/components/ui/Button";
@@ -12,6 +13,17 @@ export default function Hero() {
       <GridBackground />
 
       <div className="relative mx-auto max-w-4xl px-6 text-center animate-fade-up">
+        <div className="relative mx-auto mb-8 h-32 w-32 overflow-hidden rounded-full border border-white/10 shadow-lg sm:h-36 sm:w-36">
+          <Image
+            src="/Me.jpeg"
+            alt="Portrait of Harsha Chandimal"
+            fill
+            priority
+            sizes="(min-width: 640px) 144px, 128px"
+            className="object-cover"
+          />
+        </div>
+
         <div className="mb-6 inline-flex">
           <Badge accent="emerald">
             <span className="mr-1.5 inline-block h-1.5 w-1.5 animate-pulse-glow rounded-full bg-emerald-glow" />
