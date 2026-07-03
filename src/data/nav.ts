@@ -11,6 +11,6 @@ export const navItems: NavItem[] = [
 
 export const socialLinks: SocialLink[] = [
   { label: "GitHub", href: "https://github.com/harshachandimal", icon: "github" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/harshachandimal", icon: "linkedin" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/harsha-chandimal-61a025355", icon: "linkedin" },
   { label: "Email", href: "mailto:harshachandim92@gmail.com", icon: "mail" },
 ];
