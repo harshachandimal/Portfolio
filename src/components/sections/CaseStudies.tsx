@@ -1,10 +1,14 @@
+"use client";
+
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { motion } from "motion/react";
 import SectionHeading from "@/components/ui/SectionHeading";
 import GlassCard from "@/components/ui/GlassCard";
 import TechList from "@/components/ui/TechList";
 import { projects } from "@/data/projects";
 import { accentMap } from "@/lib/accent";
+import AnimatedSection, { fadeUpItem } from "@/components/animation/AnimatedSection";
 
 const featuredStudies = projects.filter((p) =>
   ["codemind", "demandflow-ai"].includes(p.slug)
@@ -19,11 +23,12 @@ export default function CaseStudies() {
         description="How two of these systems are actually engineered — from data pipeline to interface."
       />
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <AnimatedSection className="grid gap-6 lg:grid-cols-2">
         {featuredStudies.map((project) => {
           const a = accentMap[project.accent];
           return (
-            <GlassCard key={project.slug} className="flex flex-col justify-between">
+            <motion.div key={project.slug} variants={fadeUpItem}>
+            <GlassCard className="flex h-full flex-col justify-between">
               <div>
                 <span className={`font-mono text-xs uppercase tracking-widest ${a.text}`}>
                   Case Study
@@ -54,9 +59,10 @@ export default function CaseStudies() {
                 )}
               </div>
             </GlassCard>
+            </motion.div>
           );
         })}
-      </div>
+      </AnimatedSection>
     </section>
   );
 }
