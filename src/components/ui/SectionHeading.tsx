@@ -14,10 +14,10 @@ export default function SectionHeading({
   const isCenter = align === "center";
   return (
     <div className={`mb-14 max-w-2xl ${isCenter ? "mx-auto text-center" : ""}`}>
-      <span className="font-mono text-xs uppercase tracking-[0.3em] text-cyan-glow">
+      <span className="font-heading text-xs uppercase tracking-[0.3em] text-accent">
         {eyebrow}
       </span>
-      <h2 className="mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+      <h2 className="mt-3 font-heading text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
         {title}
       </h2>
       {description && (

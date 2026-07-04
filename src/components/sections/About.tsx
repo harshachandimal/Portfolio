@@ -11,19 +11,16 @@ const pillars = [
     icon: Layers,
     title: "Full-Stack Engineering",
     body: "React, Next.js, Laravel, and MySQL wired into cohesive products — not disconnected demos.",
-    accent: "text-cyan-glow",
   },
   {
     icon: Brain,
     title: "Applied AI/ML",
     body: "PyTorch and Scikit-learn models — LSTMs, GRUs, and ensembles — trained to solve real prediction problems.",
-    accent: "text-violet-glow",
   },
   {
     icon: Cpu,
     title: "Systems That Explain",
     body: "Interfaces that surface reasoning — complexity, confidence, forecasts — instead of hiding it behind a black box.",
-    accent: "text-emerald-glow",
   },
 ];
 
@@ -37,10 +34,10 @@ export default function About() {
       />
 
       <AnimatedSection className="grid gap-6 sm:grid-cols-3">
-        {pillars.map(({ icon: Icon, title, body, accent }) => (
+        {pillars.map(({ icon: Icon, title, body }) => (
           <motion.div key={title} variants={fadeUpItem}>
             <GlassCard>
-              <Icon className={`h-6 w-6 ${accent}`} aria-hidden />
+              <Icon className="h-6 w-6 text-accent" aria-hidden />
               <h3 className="mt-4 text-lg font-semibold text-foreground">{title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">{body}</p>
             </GlassCard>

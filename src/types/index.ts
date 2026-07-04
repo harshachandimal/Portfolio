@@ -1,5 +1,3 @@
-export type Accent = "emerald" | "cyan" | "violet";
-
 export interface NavItem {
   label: string;
   href: string;
@@ -11,7 +9,6 @@ export interface Project {
   tagline: string;
   description: string;
   tech: string[];
-  accent: Accent;
   visual: "codemind" | "demandflow" | "fifa" | "autofix";
   highlights: string[];
   links?: {
@@ -23,7 +20,6 @@ export interface Project {
 
 export interface SkillGroup {
   category: string;
-  accent: Accent;
   skills: string[];
 }
 

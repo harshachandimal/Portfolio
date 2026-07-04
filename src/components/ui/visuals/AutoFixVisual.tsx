@@ -12,25 +12,11 @@ export default function AutoFixVisual() {
           <div key={step} className="flex flex-1 items-center last:flex-none">
             <div className="flex flex-col items-center gap-1.5">
               <motion.div
-                className="h-2.5 w-2.5 rounded-full"
-                style={{ background: "var(--accent-emerald)" }}
-                initial={{ opacity: 0.25, boxShadow: "0 0 0px var(--accent-emerald)" }}
-                whileInView={{
-                  opacity: [0.25, 1, 0.25],
-                  boxShadow: [
-                    "0 0 0px var(--accent-emerald)",
-                    "0 0 10px var(--accent-emerald)",
-                    "0 0 0px var(--accent-emerald)",
-                  ],
-                }}
+                className="h-2.5 w-2.5 rounded-full bg-accent"
+                initial={{ opacity: 0, scale: 0.6 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{
-                  duration: 2.4,
-                  delay: i * 0.5,
-                  repeat: Infinity,
-                  repeatDelay: (steps.length - 1) * 0.5,
-                  ease: "easeInOut",
-                }}
+                transition={{ duration: 0.4, delay: i * 0.15, ease: "easeOut" }}
               />
               <span className="whitespace-nowrap font-mono text-[9px] text-muted">{step}</span>
             </div>

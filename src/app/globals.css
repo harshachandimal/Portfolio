@@ -1,16 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #05070a;
-  --surface: #0b0e14;
-  --surface-2: #10141c;
-  --foreground: #e7ecf5;
-  --muted: #8b96a8;
-  --border: #1e2531;
+  --background: #0a0a0a;
+  --surface: #121212;
+  --surface-2: #1a1a1a;
+  --foreground: #f5f5f0;
+  --muted: #8a8a86;
+  --border: #262626;
 
-  --accent-emerald: #34e5b0;
-  --accent-cyan: #38d0ff;
-  --accent-violet: #a179ff;
+  --accent-yellow: #f5c518;
 }
 
 @theme inline {
@@ -20,49 +18,27 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-border: var(--border);
-  --color-emerald-glow: var(--accent-emerald);
-  --color-cyan-glow: var(--accent-cyan);
-  --color-violet-glow: var(--accent-violet);
+  --color-accent: var(--accent-yellow);
 
   --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains);
+  --font-heading: var(--font-space-grotesk);
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 
-  --animate-grid-pan: grid-pan 24s linear infinite;
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-pulse-glow: pulse-glow 3.5s ease-in-out infinite;
   --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-  --animate-trace: trace 2.8s ease-in-out infinite;
-  --animate-spin-slow: spin-slow 16s linear infinite;
-  --animate-spin-slower: spin-slow 34s linear infinite;
-  --animate-particle-drift: particle-drift 9s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 3.5s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
 
-  @keyframes grid-pan {
-    0% { background-position: 0 0; }
-    100% { background-position: 64px 64px; }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
   }
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
-  }
-  @keyframes pulse-glow {
-    0%, 100% { opacity: 0.55; }
-    50% { opacity: 1; }
-  }
-  @keyframes fade-up {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes trace {
-    0% { stroke-dashoffset: 240; }
-    60%, 100% { stroke-dashoffset: 0; }
-  }
-  @keyframes spin-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  @keyframes particle-drift {
-    0%, 100% { transform: translateY(0px); opacity: 0.15; }
-    50% { transform: translateY(-16px); opacity: 0.5; }
+    50% { transform: translateY(-8px); }
   }
 }
 
@@ -81,31 +57,16 @@ body {
   }
 
   .glass {
-    background: color-mix(in oklab, var(--surface) 65%, transparent);
-    border: 1px solid color-mix(in oklab, var(--border) 90%, transparent);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: var(--surface);
+    border: 1px solid var(--border);
   }
 
   .glass-hover {
-    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.25s ease, transform 0.25s ease;
   }
   .glass-hover:hover {
-    border-color: color-mix(in oklab, var(--accent-cyan) 45%, var(--border));
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px -20px color-mix(in oklab, var(--accent-cyan) 25%, transparent);
-  }
-
-  .text-gradient {
-    background: linear-gradient(90deg, var(--accent-emerald), var(--accent-cyan) 55%, var(--accent-violet));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .glow-border {
-    box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent-cyan) 30%, transparent),
-      0 0 40px -10px color-mix(in oklab, var(--accent-cyan) 35%, transparent);
+    border-color: color-mix(in oklab, var(--accent-yellow) 50%, var(--border));
+    transform: translateY(-2px);
   }
 
   .noise::before {
@@ -115,27 +76,5 @@ body {
     opacity: 0.035;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     pointer-events: none;
-  }
-
-  .shine-sweep {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    border-radius: inherit;
-    pointer-events: none;
-  }
-  .shine-sweep::before {
-    content: "";
-    position: absolute;
-    top: -60%;
-    left: -60%;
-    width: 40%;
-    height: 220%;
-    background: linear-gradient(75deg, transparent, color-mix(in oklab, var(--accent-cyan) 30%, transparent), transparent);
-    transform: translateX(-60%) rotate(8deg);
-    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .group:hover .shine-sweep::before {
-    transform: translateX(340%) rotate(8deg);
   }
 }

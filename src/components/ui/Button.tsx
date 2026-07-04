@@ -14,11 +14,11 @@ interface ButtonProps {
 
 const variants = {
   primary:
-    "bg-gradient-to-r from-emerald-glow via-cyan-glow to-violet-glow text-background font-semibold hover:brightness-110 hover:shadow-[0_0_30px_-6px_var(--accent-cyan)]",
+    "bg-accent text-background font-semibold hover:bg-accent/90",
   secondary:
-    "glass glass-hover text-foreground border-border hover:text-cyan-glow",
+    "glass glass-hover text-foreground border-border hover:text-accent",
   ghost:
-    "text-muted hover:text-foreground underline underline-offset-4 decoration-border hover:decoration-cyan-glow",
+    "text-muted hover:text-foreground underline underline-offset-4 decoration-border hover:decoration-accent",
 };
 
 export default function Button({
@@ -37,7 +37,7 @@ export default function Button({
       rel={external ? "noopener noreferrer" : undefined}
       download={download}
       className={cn(
-        "inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm transition-all duration-300",
+        "inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm transition-all duration-300",
         variants[variant],
         className
       )}

@@ -3,9 +3,9 @@
 import { motion } from "motion/react";
 
 const outcomes = [
-  { label: "Home", value: 54, color: "var(--accent-emerald)" },
-  { label: "Draw", value: 21, color: "var(--accent-violet)" },
-  { label: "Away", value: 25, color: "var(--accent-cyan)" },
+  { label: "Home", value: 54, highlight: true },
+  { label: "Draw", value: 21, highlight: false },
+  { label: "Away", value: 25, highlight: false },
 ];
 
 export default function FifaVisual() {
@@ -16,8 +16,7 @@ export default function FifaVisual() {
           <span className="w-9 shrink-0 font-mono text-[10px] text-muted">{o.label}</span>
           <div className="h-2 w-full overflow-hidden rounded-full bg-surface-2">
             <motion.div
-              className="h-full rounded-full"
-              style={{ background: o.color }}
+              className={`h-full rounded-full ${o.highlight ? "bg-accent" : "bg-muted"}`}
               initial={{ width: "0%" }}
               whileInView={{ width: `${o.value}%` }}
               viewport={{ once: true }}

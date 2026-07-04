@@ -9,8 +9,8 @@ export default function Footer() {
   return (
     <footer className="relative border-t border-border">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 py-10 sm:flex-row sm:justify-between">
-        <p className="font-mono text-sm text-muted">
-          <span className="text-gradient">Harsha Chandimal</span> · built with Next.js &amp; Tailwind
+        <p className="font-heading text-sm text-muted">
+          <span className="text-accent">Harsha Chandimal</span> · built with Next.js &amp; Tailwind
         </p>
 
         <ul className="flex items-center gap-4">
@@ -23,7 +23,7 @@ export default function Footer() {
                   target={link.href.startsWith("http") ? "_blank" : undefined}
                   rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   aria-label={link.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-cyan-glow/40 hover:text-cyan-glow"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-accent/40 hover:text-accent"
                 >
                   <Icon className="h-4 w-4" aria-hidden />
                 </Link>

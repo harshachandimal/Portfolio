@@ -6,7 +6,6 @@ import { Menu, X, Terminal } from "lucide-react";
 import { motion } from "motion/react";
 import { navItems } from "@/data/nav";
 import { cn } from "@/lib/utils";
-import MagneticButton from "@/components/animation/MagneticButton";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -46,9 +45,9 @@ export default function Navbar() {
       )}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6">
-        <Link href="#top" className="flex items-center gap-2 font-mono text-sm font-semibold">
-          <Terminal className="h-4 w-4 text-cyan-glow" aria-hidden />
-          <span className="text-gradient">harsha.dev</span>
+        <Link href="#top" className="flex items-center gap-2 font-heading text-sm font-semibold">
+          <Terminal className="h-4 w-4 text-accent" aria-hidden />
+          <span className="text-foreground">harsha.dev</span>
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
@@ -61,20 +60,20 @@ export default function Navbar() {
                   href={item.href}
                   className={cn(
                     "group relative inline-block text-sm transition-colors",
-                    isActive ? "text-cyan-glow" : "text-muted hover:text-foreground"
+                    isActive ? "text-accent" : "text-muted hover:text-foreground"
                   )}
                 >
                   {item.label}
                   <span
                     className={cn(
-                      "absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-cyan-glow/50 transition-transform duration-300 group-hover:scale-x-100",
+                      "absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-accent/50 transition-transform duration-300 group-hover:scale-x-100",
                       isActive && "hidden"
                     )}
                   />
                   {isActive && (
                     <motion.span
                       layoutId="nav-underline"
-                      className="absolute -bottom-1 left-0 h-px w-full bg-cyan-glow shadow-[0_0_8px_var(--accent-cyan)]"
+                      className="absolute -bottom-1 left-0 h-px w-full bg-accent"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -84,14 +83,12 @@ export default function Navbar() {
           })}
         </ul>
 
-        <MagneticButton className="hidden md:inline-flex">
-          <Link
-            href="#contact"
-            className="inline-flex rounded-full border border-cyan-glow/40 bg-cyan-glow/10 px-4 py-2 text-sm text-cyan-glow transition-all hover:bg-cyan-glow/20"
-          >
-            Let&apos;s Talk
-          </Link>
-        </MagneticButton>
+        <Link
+          href="#contact"
+          className="hidden rounded-lg border border-accent/40 bg-accent/10 px-4 py-2 text-sm text-accent transition-colors hover:bg-accent/20 md:inline-flex"
+        >
+          Let&apos;s Talk
+        </Link>
 
         <button
           type="button"
@@ -105,13 +102,13 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <ul className="glass mx-6 mt-3 flex flex-col gap-1 rounded-2xl border border-border p-4 md:hidden">
+        <ul className="glass mx-6 mt-3 flex flex-col gap-1 rounded-xl border border-border p-4 md:hidden">
           {navItems.map((item) => (
             <li key={item.href}>
               <Link
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-2.5 text-sm text-muted hover:bg-surface-2 hover:text-cyan-glow"
+                className="block rounded-lg px-3 py-2.5 text-sm text-muted hover:bg-surface-2 hover:text-accent"
               >
                 {item.label}
               </Link>

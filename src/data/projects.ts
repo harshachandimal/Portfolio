@@ -8,7 +8,6 @@ export const projects: Project[] = [
     description:
       "An intelligent code analysis platform that explains time complexity, space complexity, detected patterns, and runtime trace behavior. Built to help students understand code execution visually.",
     tech: ["React", "Tailwind CSS", "Laravel", "MySQL", "Node.js", "TypeScript", "AST Parsing"],
-    accent: "emerald",
     visual: "codemind",
     highlights: [
       "Static AST-based complexity detection",
@@ -25,7 +24,6 @@ export const projects: Project[] = [
     description:
       "A business demand forecasting and inventory prediction system using neural networks such as LSTM/GRU to help businesses understand future sales demand.",
     tech: ["React", "Laravel", "MySQL", "FastAPI", "Python", "PyTorch", "LSTM", "GRU"],
-    accent: "cyan",
     visual: "demandflow",
     highlights: [
       "LSTM/GRU sequence models for sales forecasting",
@@ -42,7 +40,6 @@ export const projects: Project[] = [
     description:
       "A machine learning project that predicts FIFA match outcomes using a hybrid ensemble model. The best model blends Random Forest and Logistic Regression probabilities for stronger overall prediction performance and draw detection.",
     tech: ["Python", "Scikit-learn", "FastAPI", "React", "Machine Learning", "Ensemble Models"],
-    accent: "violet",
     visual: "fifa",
     highlights: [
       "Hybrid Random Forest + Logistic Regression ensemble",
@@ -59,7 +56,6 @@ export const projects: Project[] = [
     description:
       "A full-stack vehicle service platform connecting vehicle owners with garages, mechanics, detailers, and carriers. Includes authentication, provider search, booking flow, service status tracking, and invoices.",
     tech: ["React", "Tailwind CSS", "Laravel/Node.js", "MySQL/PostgreSQL", "JWT", "Railway"],
-    accent: "emerald",
     visual: "autofix",
     highlights: [
       "Multi-role auth for owners, garages & carriers",

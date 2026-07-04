@@ -17,7 +17,7 @@ export default function GlassCard({
   return (
     <Tag
       className={cn(
-        "glass relative overflow-hidden rounded-2xl p-6",
+        "glass relative overflow-hidden rounded-xl p-6",
         hover && "glass-hover",
         className
       )}

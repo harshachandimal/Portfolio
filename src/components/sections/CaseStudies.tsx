@@ -7,7 +7,6 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import GlassCard from "@/components/ui/GlassCard";
 import TechList from "@/components/ui/TechList";
 import { projects } from "@/data/projects";
-import { accentMap } from "@/lib/accent";
 import AnimatedSection, { fadeUpItem } from "@/components/animation/AnimatedSection";
 
 const featuredStudies = projects.filter((p) =>
@@ -24,13 +23,11 @@ export default function CaseStudies() {
       />
 
       <AnimatedSection className="grid gap-6 lg:grid-cols-2">
-        {featuredStudies.map((project) => {
-          const a = accentMap[project.accent];
-          return (
-            <motion.div key={project.slug} variants={fadeUpItem}>
+        {featuredStudies.map((project) => (
+          <motion.div key={project.slug} variants={fadeUpItem}>
             <GlassCard className="flex h-full flex-col justify-between">
               <div>
-                <span className={`font-mono text-xs uppercase tracking-widest ${a.text}`}>
+                <span className="font-heading text-xs uppercase tracking-widest text-accent">
                   Case Study
                 </span>
                 <h3 className="mt-2 text-2xl font-semibold text-foreground">{project.name}</h3>
@@ -52,16 +49,15 @@ export default function CaseStudies() {
                     href={project.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-1.5 text-sm font-medium ${a.text}`}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-accent"
                   >
                     Explore repo <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                   </Link>
                 )}
               </div>
             </GlassCard>
-            </motion.div>
-          );
-        })}
+          </motion.div>
+        ))}
       </AnimatedSection>
     </section>
   );

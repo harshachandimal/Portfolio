@@ -5,9 +5,6 @@ import { Download, ArrowRight, Mail } from "lucide-react";
 import { motion } from "motion/react";
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
-import MagneticButton from "@/components/animation/MagneticButton";
-import CodeParticles from "@/components/animation/CodeParticles";
-import FloatingTechLogos from "@/components/animation/FloatingTechLogos";
 import { fadeUpItem, staggerContainer } from "@/components/animation/AnimatedSection";
 
 const titleLine1 = ["I", "build"];
@@ -20,9 +17,6 @@ export default function Hero() {
       id="top"
       className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-20"
     >
-      <CodeParticles />
-      <FloatingTechLogos />
-
       <motion.div
         className="relative z-10 mx-auto max-w-4xl px-6 text-center"
         variants={staggerContainer(0.15)}
@@ -30,8 +24,7 @@ export default function Hero() {
         animate="show"
       >
         <motion.div variants={fadeUpItem} className="relative mx-auto mb-8 h-32 w-32 sm:h-36 sm:w-36">
-          <div className="absolute -inset-3 rounded-full bg-[conic-gradient(from_0deg,var(--accent-emerald),var(--accent-cyan),var(--accent-violet),var(--accent-emerald))] opacity-70 blur-md motion-safe:animate-spin-slow" />
-          <div className="relative h-full w-full overflow-hidden rounded-full border border-white/10 shadow-lg motion-safe:animate-float">
+          <div className="relative h-full w-full overflow-hidden rounded-full border-2 border-accent motion-safe:animate-float">
             <Image
               src="/Me.jpeg"
               alt="Portrait of Harsha Chandimal"
@@ -45,22 +38,22 @@ export default function Hero() {
         </motion.div>
 
         <motion.div variants={fadeUpItem} className="mb-6 inline-flex">
-          <Badge accent="emerald">
-            <span className="mr-1.5 inline-block h-1.5 w-1.5 animate-pulse-glow rounded-full bg-emerald-glow" />
+          <Badge>
+            <span className="mr-1.5 inline-block h-1.5 w-1.5 animate-pulse-glow rounded-full bg-accent" />
             Available for opportunities
           </Badge>
         </motion.div>
 
         <motion.h1
           variants={staggerContainer(0.06)}
-          className="text-balance text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl"
+          className="text-balance font-heading text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl"
         >
           {titleLine1.map((word) => (
             <motion.span key={word} variants={fadeUpItem} className="mr-[0.3em] inline-block">
               {word}
             </motion.span>
           ))}
-          <motion.span variants={fadeUpItem} className="text-gradient mr-[0.3em] inline-block">
+          <motion.span variants={fadeUpItem} className="mr-[0.3em] inline-block text-accent">
             {titleGradient}
           </motion.span>
           {titleLine2.map((word) => (
@@ -84,30 +77,24 @@ export default function Hero() {
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
           <motion.div variants={fadeUpItem}>
-            <MagneticButton>
-              <Button href="#projects" variant="primary" icon={<ArrowRight className="h-4 w-4" />}>
-                View Projects
-              </Button>
-            </MagneticButton>
+            <Button href="#projects" variant="primary" icon={<ArrowRight className="h-4 w-4" />}>
+              View Projects
+            </Button>
           </motion.div>
           <motion.div variants={fadeUpItem}>
-            <MagneticButton>
-              <Button href="#contact" variant="secondary" icon={<Mail className="h-4 w-4" />}>
-                Contact Me
-              </Button>
-            </MagneticButton>
+            <Button href="#contact" variant="secondary" icon={<Mail className="h-4 w-4" />}>
+              Contact Me
+            </Button>
           </motion.div>
           <motion.div variants={fadeUpItem}>
-            <MagneticButton>
-              <Button
-                href="/Harsha-Chandimal-CV.pdf"
-                variant="secondary"
-                download="Harsha-Chandimal-CV.pdf"
-                icon={<Download className="h-4 w-4" />}
-              >
-                Download CV
-              </Button>
-            </MagneticButton>
+            <Button
+              href="/Harsha-Chandimal-CV.pdf"
+              variant="secondary"
+              download="Harsha-Chandimal-CV.pdf"
+              icon={<Download className="h-4 w-4" />}
+            >
+              Download CV
+            </Button>
           </motion.div>
         </motion.div>
       </motion.div>
