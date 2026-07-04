@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
 import MagneticButton from "@/components/animation/MagneticButton";
 import CodeParticles from "@/components/animation/CodeParticles";
+import FloatingTechLogos from "@/components/animation/FloatingTechLogos";
 import { fadeUpItem, staggerContainer } from "@/components/animation/AnimatedSection";
 
 const titleLine1 = ["I", "build"];
@@ -20,9 +21,10 @@ export default function Hero() {
       className="relative flex min-h-screen items-center overflow-hidden pt-28 pb-20"
     >
       <CodeParticles />
+      <FloatingTechLogos />
 
       <motion.div
-        className="relative mx-auto max-w-4xl px-6 text-center"
+        className="relative z-10 mx-auto max-w-4xl px-6 text-center"
         variants={staggerContainer(0.15)}
         initial="hidden"
         animate="show"
