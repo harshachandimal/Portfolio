@@ -46,7 +46,7 @@ export const projects: Project[] = [
       "Improved draw-outcome detection",
       "FastAPI prediction endpoint with confidence scores",
     ],
-    links: { github: "https://github.com/harshachandimal/fifa-match-predictor" },
+    links: { github: "https://github.com/harshachandimal/-FIFA-Match-Predictor" },
     featured: true,
   },
   {
@@ -62,7 +62,7 @@ export const projects: Project[] = [
       "Real-time booking & service status tracking",
       "Automated invoicing workflow",
     ],
-    links: { github: "https://github.com/harshachandimal/autofix" },
+    links: { github: "https://github.com/harshachandimal/vehicle-service-ecosystem" },
     featured: true,
   },
 ];
